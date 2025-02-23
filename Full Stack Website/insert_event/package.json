@@ -1,0 +1,14 @@
+{
+  "name": "insert",
+  "version": "1.0.0",
+  "description": "insert into event table",
+  "main": "insert_into_events_table.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "husse285",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}

@@ -1,0 +1,86 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title Welcome to Node.js
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    link(rel='stylesheet', type='text/css', href='client/css/style.css')
+    style(type='text/css').
+      .jumbotron { text-align: center; }
+      form {
+      width: 1000px;
+      margin: 0 auto;
+      }
+      input[type="text"],
+      input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      }
+      input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      }
+      input[type="submit"]:hover {
+      background-color: #0056b3;
+      }
+      #errorMessage {
+      display: none;
+      width: 1000px;
+      height: 50px;
+      margin: 0 auto;
+      background-color: rgb(247, 203, 203);
+      color: red;
+      font-size: 16px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border: 1px solid rgb(186, 104, 104);
+      border-radius: 5px;
+      padding: 15px 10px;
+      }
+  body
+    .jumbotron(style='background: DarkSeaGreen !important')
+      h1 Login
+      p Please enter your username and password. Both are case sensitive.
+      br
+    #errorMessage Invalid Username and Password. Please try again!
+    form#loginForm(action='/logincheck', method='GET')
+      h2 Login
+      label(for='username') Username:
+      input#username(type='text', name='username', required='')
+      label(for='password') Password:
+      input#password(type='password', name='password', required='')
+      input(type='submit', value='Login')
+    script.
+      document.getElementById("loginForm").addEventListener("submit", function(event) {
+      // Prevent the default form submission
+      event.preventDefault();
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      // Send username and passwrod using Fetch
+      fetch(`/logincheck?username=${username}&password=${password}`)
+      .then(response => {
+      if (response.ok) {
+      // Redirect to the dashboard upon successful authentication
+      window.location.href = "/schedule";
+      } else {
+      // If authentication fails display an error message
+      console.log("alert")
+      document.getElementById("errorMessage").style.display = "block";
+      }
+      })
+      .catch(error => {
+      console.error("Error:", error);
+      });
+      });

@@ -1,0 +1,58 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    link(rel='stylesheet', type='text/css', href='client/css/style.css')
+    title Welcome to Node.js
+    style(type='text/css').
+      .jumbotron { text-align: center; }
+  body
+    .jumbotron(style='background: DarkSeaGreen !important')
+      h1 Welcome to the Login Page
+      h3 Enter your Username and Password
+    div(style='text-align:center; font-size:30px;')
+      h2#loginErr(style='background-color:red; visibility: hidden; color:darkred;') Invalid Credentials. Please Try Again!
+      form#userLogin
+        div
+          label(for='user') User:
+          input#user(type='text', name='user', placeholder='Username', required='')
+        div
+          label(for='password') Password:
+          input#password(type='password', name='password', placeholder='Password', required='')
+        button#submit(type='submit', style='background-color: blue; color:white;') Log in
+      script.
+        var error = document.getElementById("loginErr");
+        var userForm = document.getElementById("userLogin");
+        var username = document.getElementById("user");
+        var password = document.getElementById("password");
+        userForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        let jsonBody = JSON.stringify({
+        username: username.value,
+        password: password.value
+        });
+        fetch("/loggingIn", {
+        method: "POST",
+        body: jsonBody,
+        headers: {"Content-type": "application/json"}
+        })
+        .then(response => {
+        return response.json();})
+        .then(data => {
+        var dataStringified = JSON.stringify(data);
+        console.log(dataStringified);
+        if (data.status == "success"){
+        window.location.href = "schedule";
+        }
+        else {
+        error.style.visibility = "visible";
+        username.value = "";
+        password.value = "";
+        }
+        })
+        .catch(error => console.log("Request Failed", error));
+        })

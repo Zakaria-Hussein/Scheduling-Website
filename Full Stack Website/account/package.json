@@ -1,0 +1,14 @@
+{
+  "name": "account_table",
+  "version": "1.0.0",
+  "description": "account table",
+  "main": "create_accounts_table.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "husse285",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}

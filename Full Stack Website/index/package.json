@@ -1,0 +1,14 @@
+{
+  "name": "index",
+  "version": "1.0.0",
+  "description": "index start",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "husse285",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
