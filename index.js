@@ -50,7 +50,7 @@ app.get('/', (req, res) => {
     </html>
   `);
 =======
-  res.sendFile(path.join(__dirname, 'static', 'html', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 >>>>>>> cdbb353a4a18d5096e36b0e7d4c2c1dc4bb022c1:docs/Full Stack Website/index.js
 });
 
@@ -78,7 +78,7 @@ app.get('/login', (req, res) => {
       </html>
     `);
 =======
-    res.sendFile(path.join(__dirname, 'static', 'html', 'login.html'));
+    res.sendFile(path.join(__dirname, 'login.html'));
     
 >>>>>>> cdbb353a4a18d5096e36b0e7d4c2c1dc4bb022c1:docs/Full Stack Website/index.js
   }
@@ -163,7 +163,7 @@ app.get('/schedule', (req, res) => {
     `);
 =======
     //console.log("already logged in")
-    res.sendFile(path.join(__dirname, 'static', 'html', 'schedule.html'));
+    res.sendFile(path.join(__dirname, 'schedule.html'));
 >>>>>>> cdbb353a4a18d5096e36b0e7d4c2c1dc4bb022c1:docs/Full Stack Website/index.js
   } else {
     // Otherwise, redirect to login
@@ -236,7 +236,7 @@ app.get('/addEvent', function(req, res) {
   if (req.session.loggedIn) {
     // Redirect to the Schedule page if the user is logged in
     //console.log("already logged in")
-    res.sendFile(path.join(__dirname, 'static', 'html', 'addEvent.html'));
+    res.sendFile(path.join(__dirname, 'addEvent.html'));
   } else {
     // Otherwise, display the login page
     res.redirect('/login')
@@ -288,7 +288,7 @@ app.get('/eventEntry', function(req, res) {
 
 //console.log(__dirname + '/static');
 // middle ware to serve static files
-app.use('/static', express.static(__dirname + '/static'));
+//app.use('/static', express.static(__dirname + '/static'));
 
 
 // function to return the 404 message and error to client
