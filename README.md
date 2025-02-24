@@ -26,13 +26,21 @@ The server will be accessible at http://localhost:9007. You can open this in you
 
 Endpoints
 /: This endpoint returns the welcome page (index.html).
+
 /login: This endpoint returns the login page (login.html) or redirects to /schedule if the user is already logged in.
+
 /logincheck: This endpoint authenticates the user based on the provided username and password query parameters. It responds with a success or failure message.
+
 /logout: This endpoint logs the user out by destroying the session and redirects to the login page.
+
 /schedule: This endpoint returns the schedule page (schedule.html) if the user is logged in, or redirects to /login if the user is not logged in.
+
 /getSchedule: This endpoint retrieves schedule events for a specific day, based on the day query parameter, and returns event details in JSON format.
+
 /addEvent: This endpoint returns the page (addEvent.html) for adding new events if the user is logged in. If the user is not logged in, they are redirected to the login page.
+
 /eventEntry: This endpoint adds a new event to the schedule. It accepts various event details (e.g., day, event, start, end, etc.) as query parameters and inserts them into the database.
+
 *: This endpoint returns a 404 error for any undefined routes.
 
 Session Management
