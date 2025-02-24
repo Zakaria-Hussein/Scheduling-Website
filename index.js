@@ -1,13 +1,3 @@
-<<<<<<< HEAD:Full Stack Website/index.js
-// include the express modules
-const express = require("express");
-const app = express();
-const bodyParser = require('body-parser');
-const session = require('express-session');
-const mysql = require("mysql");
-const bcrypt = require('bcrypt');
-
-=======
 var express = require("express");
 var app = express();
 var bodyParser = require('body-parser');
@@ -17,16 +7,12 @@ var mysql = require("mysql");
 const bcrypt = require('bcrypt');
 
 
->>>>>>> cdbb353a4a18d5096e36b0e7d4c2c1dc4bb022c1:docs/Full Stack Website/index.js
 // apply the body-parser middleware to all incoming requests
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // use express-session
-<<<<<<< HEAD:Full Stack Website/index.js
-=======
 // in memory session is sufficient for this assignment
->>>>>>> cdbb353a4a18d5096e36b0e7d4c2c1dc4bb022c1:docs/Full Stack Website/index.js
 app.use(session({
   secret: "csci4131secretkey",
   saveUninitialized: true,
@@ -39,19 +25,7 @@ app.listen(9007, () => console.log('Listening on port 9007!'));
 // function to return the welcome page
 app.get('/', (req, res) => {
   console.log("In Welcome");
-<<<<<<< HEAD:Full Stack Website/index.js
-  res.send(`
-    <html>
-      <head><title>Welcome</title></head>
-      <body>
-        <h1>Welcome Page</h1>
-        <p>Welcome to our website!</p>
-      </body>
-    </html>
-  `);
-=======
   res.sendFile(path.join(__dirname, 'index.html'));
->>>>>>> cdbb353a4a18d5096e36b0e7d4c2c1dc4bb022c1:docs/Full Stack Website/index.js
 });
 
 // handle login page
@@ -63,24 +37,8 @@ app.get('/login', (req, res) => {
     res.redirect('/schedule');
   } else {
     // Otherwise, display the login page
-<<<<<<< HEAD:Full Stack Website/index.js
-    res.send(`
-      <html>
-        <head><title>Login</title></head>
-        <body>
-          <h1>Login Page</h1>
-          <form action="/logincheck" method="GET">
-            <input type="text" name="username" placeholder="Username">
-            <input type="password" name="password" placeholder="Password">
-            <button type="submit">Login</button>
-          </form>
-        </body>
-      </html>
-    `);
-=======
     res.sendFile(path.join(__dirname, 'login.html'));
     
->>>>>>> cdbb353a4a18d5096e36b0e7d4c2c1dc4bb022c1:docs/Full Stack Website/index.js
   }
 });
 
@@ -151,31 +109,14 @@ app.get('/schedule', (req, res) => {
   console.log("schedule endpoint");
   if (req.session.loggedIn) {
     // Redirect to the Schedule page if the user is logged in
-<<<<<<< HEAD:Full Stack Website/index.js
-    res.send(`
-      <html>
-        <head><title>Schedule</title></head>
-        <body>
-          <h1>Schedule Page</h1>
-          <p>Welcome to your schedule!</p>
-        </body>
-      </html>
-    `);
-=======
     //console.log("already logged in")
     res.sendFile(path.join(__dirname, 'schedule.html'));
->>>>>>> cdbb353a4a18d5096e36b0e7d4c2c1dc4bb022c1:docs/Full Stack Website/index.js
   } else {
     // Otherwise, redirect to login
     res.redirect('/login');
   }
 });
 
-<<<<<<< HEAD:Full Stack Website/index.js
-// handle 404 errors
-app.get('*', (req, res) => {
-  res.status(404).send('Page not found');
-=======
 // Fill in schedule information
 app.get('/getSchedule', function(req, res) {
   console.log("getSchedule endpoint");
@@ -295,5 +236,4 @@ app.get('/eventEntry', function(req, res) {
 app.get('*', function(req, res) {
   // add details
   res.sendStatus(404);
->>>>>>> cdbb353a4a18d5096e36b0e7d4c2c1dc4bb022c1:docs/Full Stack Website/index.js
 });
